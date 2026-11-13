@@ -21,7 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/public")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 public class HomeController {
     
     @Autowired
