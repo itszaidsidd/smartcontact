@@ -97,7 +97,6 @@ const ViewContacts = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        {/* Email par click karne par poori profile khulegi */}
                                         <Link to={`/dashboard/contact/${contact.cid}`} className="email-link">
                                             {contact.email}
                                         </Link>

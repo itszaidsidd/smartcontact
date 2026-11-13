@@ -13,12 +13,10 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      {/* Mobile Sidebar Toggle */}
       <button className="sidebar-mobile-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
         {sidebarOpen ? <FiX size={22} /> : <FiMenu size={22} />} Menu
       </button>
 
-      {/* Left Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-links">
           <NavLink to="/dashboard" end onClick={() => setSidebarOpen(false)}>
@@ -42,7 +40,6 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      {/* Right Main Content Area */}
       <main className="dashboard-content">
         <Outlet />
       </main>

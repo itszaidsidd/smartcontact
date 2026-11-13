@@ -7,7 +7,6 @@ const About = () => {
 
   return (
     <div className="about-page">
-      {/* Top Banner */}
       <div className="about-hero">
         <span className="hero-badge">About The Platform</span>
         <h1>Smart Contact Manager</h1>
@@ -16,10 +15,8 @@ const About = () => {
         </p>
       </div>
 
-      {/* Main Content Container */}
       <div className="about-container">
         
-        {/* Mission / Overview Card */}
         <div className="about-overview">
           <h2>Why Smart Contact Manager?</h2>
           <p>
@@ -28,7 +25,6 @@ const About = () => {
           </p>
         </div>
 
-        {/* Key Features Grid */}
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon"><FiCloud size={28} /></div>
@@ -55,7 +51,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Tech Stack & Highlights */}
         <div className="about-tech-card">
           <h2>Built With Modern Technologies</h2>
           <div className="tech-list">
