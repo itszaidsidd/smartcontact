@@ -42,7 +42,6 @@ const Login = () => {
                     confirmButtonText: 'Let\'s Go'
                 });
 
-                // if(result.role === 'ROLE_ADMIN') { navigate('/admin/dashboard') }
 
                 navigate('/dashboard')
             }

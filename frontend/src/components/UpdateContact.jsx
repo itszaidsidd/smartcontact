@@ -12,7 +12,7 @@ const UpdateContact = () => {
   const { register, handleSubmit, setValue, formState: { errors, isSubmitting } } = useForm();
   const [previewImg, setPreviewImg] = useState("https://placeholder.com");
 
-  // Purana contact data load karein
+  
   useEffect(() => {
     const fetchContactDetails = async () => {
       try {

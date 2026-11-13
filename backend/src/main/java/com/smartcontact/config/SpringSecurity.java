@@ -33,15 +33,12 @@ public class SpringSecurity {
         return new BCryptPasswordEncoder();
     }
 
-    // 1. Yeh DaoAuthenticationProvider bean add karein (Yeh loop ko rokega)
-   @Bean
-public AuthenticationProvider authenticationProvider() {
-    // UserDetailsService ko seedha constructor mein pass karein
-    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
-    authProvider.setPasswordEncoder(passwordEncoder());
-    return authProvider;
-}
-
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
@@ -51,13 +48,13 @@ public AuthenticationProvider authenticationProvider() {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) 
-                .csrf(csrf -> csrf.disable())  
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/public/**", "/uploads/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasRole("USER")
-                        .anyRequest().authenticated()) 
+                        .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider()) // 2. Yahan provider ko register karein
                 .httpBasic(Customizer.withDefaults())
                 .build();
@@ -66,7 +63,7 @@ public AuthenticationProvider authenticationProvider() {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:5173")); 
+        configuration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:5173"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);

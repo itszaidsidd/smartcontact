@@ -5,7 +5,7 @@ import { FiAlignJustify, FiX } from "react-icons/fi";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  useLocation(); // Route change par Navbar ko refresh karne ke liye
+  useLocation(); 
 
   const isLoggedIn = localStorage.getItem("basicToken") !== null;
   const userName = localStorage.getItem("userName");

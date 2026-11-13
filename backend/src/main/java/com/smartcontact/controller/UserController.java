@@ -72,23 +72,7 @@ public class UserController {
             user.setName(name);
             user.setAbout(about);
 
-            // if (file != null && !file.isEmpty()) {
-            // String uploadDir = "uploads/";
-            // File directory = new File(uploadDir);
-            // if (!directory.exists()) {
-            // directory.mkdirs();
-            // }
-
-            // String fileName = System.currentTimeMillis() + "_" +
-            // file.getOriginalFilename();
-            // Path filePath = Paths.get(uploadDir + fileName);
-
-            // Files.copy(file.getInputStream(), filePath,
-            // StandardCopyOption.REPLACE_EXISTING);
-
-            // String fileUrl = "http://localhost:8080/uploads/" + fileName;
-            // user.setImageUrl(fileUrl);
-            // }
+           
             if (file != null && !file.isEmpty()) {
                 Map uploadResult = cloudinary.uploader().upload(file.getBytes(),
                         Map.of("folder", "smart_contact_profiles"));
@@ -134,23 +118,7 @@ public class UserController {
             contact.setPhone(phone);
             contact.setDescription(description);
 
-            // if (file != null && !file.isEmpty()) {
-            // String uploadDir = "uploads/";
-            // File directory = new File(uploadDir);
-            // if (!directory.exists()) {
-            // directory.mkdirs();
-            // }
-
-            // String fileName = System.currentTimeMillis() + "_" +
-            // file.getOriginalFilename();
-            // Path filePath = Paths.get(uploadDir + fileName);
-            // Files.copy(file.getInputStream(), filePath,
-            // StandardCopyOption.REPLACE_EXISTING);
-
-            // contact.setImage("http://localhost:8080/uploads/" + fileName);
-            // } else {
-            // contact.setImage("https://placeholder.com");
-            // }
+           
 
             if (file != null && !file.isEmpty()) {
                 Map uploadResult = cloudinary.uploader().upload(file.getBytes(),
@@ -164,7 +132,7 @@ public class UserController {
             contact.setUser(user);
             user.getContact().add(contact);
 
-            userRepository.save(user); // CascadeType.ALL ki wajah se contact apne aap save ho jayega
+            userRepository.save(user); 
 
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(Map.of("message", "Contact saved successfully!"));
@@ -250,22 +218,7 @@ public class UserController {
             contact.setPhone(phone);
             contact.setDescription(description);
 
-            // if (file != null && !file.isEmpty()) {
-            // String uploadDir = "uploads/";
-            // File directory = new File(uploadDir);
-            // if (!directory.exists()) {
-            // directory.mkdirs();
-            // }
-
-            // String fileName = System.currentTimeMillis() + "_" +
-            // file.getOriginalFilename();
-            // Path filePath = Paths.get(uploadDir + fileName);
-            // Files.copy(file.getInputStream(), filePath,
-            // StandardCopyOption.REPLACE_EXISTING);
-
-            // contact.setImage("http://localhost:8080/uploads/" + fileName);
-            // }
-
+           
             if (file != null && !file.isEmpty()) {
                 Map uploadResult = cloudinary.uploader().upload(file.getBytes(),
                         Map.of("folder", "smart_contact_images"));

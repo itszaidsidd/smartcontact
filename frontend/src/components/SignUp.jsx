@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2';
 import { API_BASE_URL } from '../apiConfig'
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const {
@@ -11,6 +12,8 @@ const SignUp = () => {
         setError,
         formState: { errors, isSubmitting },
     } = useForm()
+
+    const navigate=useNavigate()
 
     const onSubmit = async (data) => {
         delete data.agreement;
@@ -34,6 +37,7 @@ const SignUp = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 });
+                navigate("/login")
             }
             else if (response.status === 400 || response.status === 409) {
                 Object.keys(result).forEach((field) => {
